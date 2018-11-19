@@ -1,0 +1,54 @@
+/**
+ * Returns a boolean 1 if consecutive atm withdrawl present, 0 otherwise
+ * @method num_ratio
+ * @param user_id.transaction_event_proto
+ * @return {BOOLEAN} 1 for yes, 0 for no
+ * @author
+ */ 
+
+
+/* Proto Section Start */ 
+importPackage(Packages.com.simility.protobuffer.util);
+importPackage(Packages.com.simility.protobuffer.message);
+importPackage(Packages.com.google.protobuf);
+/* Proto Section End */
+
+export function ConsecutiveATMproto() { 
+    if (!arg1) {
+        return 0;
+    }ss
+    // Parse proto msg
+    var eventSequence = MessageProtoEventUtil.getEventSequenceBuilder(arg1);
+    var sequenceCount = eventSequence.getSequenceCount();
+
+//finds count of atm txn and pushes to an Array
+    var indexArr = []
+    var pmdkCount = 0
+    for (let i = 0; i < sequenceCount; i++) {
+        let transactionCode = eventSequence.getSequenceCount(i).getKey("transaction_code");
+        if (["MPW", "PLW"].includes(transactionCode)) {
+            indexArr.push(eventSequence.getSequenceCount(i))
+            pmdkCount++
+        }
+        if (pmdkCount <=1) {
+            return 0;
+        }
+    }
+//finds index of atm2
+    for (i in indexArr) {
+        var atm1 = i
+        var remainder = eventSequence.substr(i + 1,)
+        for (let x = 0; x < remainder.getSequenceCount(); x++)
+        let tcode2 = remainder.getSequenceCount(x).getKey("transaction_code")
+            if (["MPW", "PLW"].includes(tcode2)) {
+            var atm2 = x
+            }
+        if (!atm2) {
+            return 0;
+        }
+        if (atm2 - atm1 === 1) {
+            return 1;    
+        }
+    }
+    return 0;
+    }
