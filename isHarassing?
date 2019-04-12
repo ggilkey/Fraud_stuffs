@@ -1,0 +1,35 @@
+export function isHarassing(normald) { 
+    if(!normald){return false;}
+if(normald.search('stop') != -1 && normald.search('me') != -1){
+    return true;}
+  else if (normald.search('block') != -1 && normald.search('me') != -1){
+    return true;}
+  else if (normald.search('leaveme') != -1){
+    return true;}
+  else if (normald.search('alone') != -1 && normald.search('me') != -1){ 
+    return true;}
+  else if (normald.search('stop') != -1 && normald.search('callin') != -1){ 
+    return true;}
+  else if (normald.search('harassing') != -1 && normald.search('me') != -1){ 
+    return true;}
+  else if (normald.search('kill') != -1 && normald.search('my') != -1 && normald.indexOf('self') != -1){
+    return true;}
+  else if (normald.search('kill') != -1 && normald.search('your') != -1 && normald.indexOf('self') != -1){
+    return true;}
+  else if (normald.search('go') != -1 & normald.search('away') != -1){ 
+    return true;}
+  else if (normald.search('hope') != -1 && normald.search('die') != -1){
+    return true;}
+  else if (normald.search('parale') != -1){ 
+    return true;}
+  else if (normald.search('bloqueaste') != -1){ 
+    return true;}
+  else if (normald.search('dejame') != -1 && normald.search('paz') != -1){ 
+    return true;}
+  else if (normald.search('deja') != -1 && normald.search('llamar') != -1){ 
+    return true;}
+  else if (normald.search('abuso') != -1){ 
+    return true;}
+  else{
+    return false;}
+}
