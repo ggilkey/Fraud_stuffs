@@ -1,0 +1,27 @@
+export function UnusualLargePMDK(txn_history){
+  if(!txn_history){
+    return null;
+  }
+  var sumPMDK = 0;
+  var txnHist = JSON.parse(txn_history);
+  for (eid in txnHist){
+    if (txnHist[eid]["t_code"] = "PMDK" && txnHist[eid]["amount"] > 5){
+      sumPMDK += txnHist[eid]["amount"]
+    }
+  }
+  sumPMDK = parseFloat(sumPMDK);
+  var avgPMDK = sumPMDK / txnHist.length;
+  var maxPMDK = 0
+  for (eid in txnHist){
+    if (txnHist[eid]["amount"] > maxPMDK){
+      maxPMDK = txnHist[eid]["amount"];
+    }
+  }
+  var answer = (maxPMDK > (2 * avgPMDK) ? true : false);
+  return answer;
+}
+
+
+
+
+dd > 2x avg
